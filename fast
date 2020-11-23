@@ -1,0 +1,197 @@
+{
+  "torrentapi": {
+    "name": "RARBG",
+    "enabled": true,
+    "languages": [
+      "en"
+    ],
+    "base_url": "https://torrentapi.org",
+    "fallback_urls": [],
+    "response_type": "json",
+    "time_to_wait_between_each_request_ms": 300,
+    "time_to_wait_on_too_many_request_ms": 2000,
+    "trust_results": true,
+    "token": {
+      "query": "/pubapi_v2.php?get_token=get_token&app_id=helios",
+      "token_validity_time_ms": 840000,
+      "token_format": {
+        "token": "token"
+      }
+    },
+    "movie": {
+      "query": "/pubapi_v2.php?mode=search&search_imdb={query}&category=movies&format=json_extended&app_id=helios&token={token}",
+      "keywords": "{imdbId}"
+    },
+    "episode": {
+      "query": "/pubapi_v2.php?mode=search&search_string={query}&category=tv&format=json_extended&app_id=helios&token={token}",
+      "keywords": "{title} {episodeCode}"
+    },
+    "season": {
+      "query": "/pubapi_v2.php?mode=search&search_string={query}&category=tv&format=json_extended&app_id=helios&token={token}",
+      "keywords": [
+        "{title} {seasonCode}",
+        "{title} season"
+      ]
+    },
+    "json_format": {
+      "results": "torrent_results",
+      "url": "download",
+      "title": "title",
+      "seeds": "seeders",
+      "peers": "leechers",
+      "size": "size"
+    },
+    "title_replacement": {
+      "'s": "s",
+      "\"": ""
+    }
+  },
+  "zooqle": {
+    "name": "zooqle",
+    "enabled": true,
+    "languages": [
+      "en"
+    ],
+    "base_url": "https://zooqle.com",
+    "fallback_urls": [
+      "https://zooqle.t0r.club",
+      "https://zooqle-com.unblocksites.fun",
+      "https://zooqle.unblocked.win",
+      "https://zooqle.nocensor.xyz",
+      "https://zooqle.unblocked.llc",
+      "https://zooqle.unblocked.krd",
+      "https://zooqle.p4y.info"
+    ],
+    "response_type": "text",
+    "separator": "+",
+    "movie": {
+      "query": "/search?q={query}",
+      "keywords": "{title} {year}"
+    },
+    "episode": {
+      "query": "/search?q={query}",
+      "keywords": "{title} {episodeCode}"
+    },
+    "season": {
+      "query": "/search?q={query}",
+      "keywords": [
+        "{title} {seasonCode}",
+        "{title} season"
+      ]
+    },
+    "anime": {
+      "query": "/search?q={query}",
+      "keywords": "{title} {absoluteNumber}"
+    },
+    "html_parser": {
+      "row": "doc.querySelectorAll('.table-torrents tbody tr')",
+      "title": "row.querySelector('a').textContent",
+      "peers": "row.querySelector('td:nth-child(6) .prog-r') ? row.querySelector('td:nth-child(6) .prog-r').textContent : 0",
+      "seeds": "row.querySelector('td:nth-child(6) .prog-l') ? row.querySelector('td:nth-child(6) .prog-l').textContent : 0",
+      "size": "row.querySelector('td:nth-child(4) .prog-l').textContent.replace('K','000')",
+      "url": "row.querySelectorAll('a')[2].getAttribute('href')"
+    },
+    "source_is_in_sub_page": false,
+    "title_replacement": {
+      ".": "",
+      ":": "",
+      "'": "",
+      "&": ""
+    }
+  },
+  "_1337x": {
+    "name": "1337x",
+    "enabled": true,
+    "languages": [
+      "en"
+    ],
+    "base_url": "https://1337x.to",
+    "fallback_urls": [
+      "https://1337x.st",
+      "https://1337x.is",
+      "https://1337x.am",
+      "https://x1337x.ws",
+      "https://x1337x.eu",
+      "https://x1337x.se",
+      "https://1337x.unblocked.llc",
+      "https://1337x.unblocker.cc",
+      "https://1337x.unblockall.org"
+    ],
+    "response_type": "text",
+    "movie": {
+      "query": "/category-search/{query}/Movies/1/",
+      "keywords": "{title} {year}"
+    },
+    "episode": {
+      "query": "/sort-category-search/{query}/TV/size/desc/1/",
+      "keywords": "{title} {episodeCode}"
+    },
+    "season": {
+      "query": "/sort-category-search/{query}/TV/size/desc/1/",
+      "keywords": [
+        "{title} {seasonCode}",
+        "{title} season"
+      ]
+    },
+    "anime": {
+      "query": "/category-search/{query}/Anime/1/",
+      "keywords": "{title} {episode}"
+    },
+    "separator": "+",
+    "html_parser": {
+      "row": "doc.querySelectorAll('tbody > tr')",
+      "title": "row.querySelector('a:nth-child(2)').innerHTML",
+      "peers": "row.querySelector('.leeches').innerHTML",
+      "seeds": "row.querySelector('.seeds').innerHTML",
+      "size": "row.querySelector('tbody > tr .size').textContent.split('B')[0] + 'B'",
+      "url": "row.querySelector('a:nth-child(2)').getAttribute('href')"
+    },
+    "source_is_in_sub_page": true,
+    "title_replacement": {
+      "'s": "s",
+      "\"": ""
+    }
+  },
+  "solidtorrents": {
+    "name": "solidtorrents",
+    "enabled": true,
+    "languages": [
+      "en"
+    ],
+    "base_url": "https://solidtorrents.net/api/v1/search?q={query}&category=video&sort=seeders",
+    "response_type": "json",
+    "movie": {
+      "query": "",
+      "keywords": "{title} {year}"
+    },
+    "episode": {
+      "query": "",
+      "keywords": "{title} {episodeCode}"
+    },
+    "season": {
+      "query": "",
+      "keywords": [
+        "{title} {seasonCode}",
+        "{title} season"
+      ]
+    },
+    "anime": {
+      "query": "",
+      "keywords": "{title} {absoluteNumber}"
+    },
+    "json_format": {
+      "results": "results",
+      "url": "magnet",
+      "title": "title",
+      "seeds": "swarm.seeders",
+      "peers": "swarm.leechers",
+      "size": "size"
+    },
+    "title_replacement": {
+      ".": "",
+      ":": "",
+      "'": "",
+      "&": ""
+    }
+  }
+}
