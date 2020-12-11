@@ -111,7 +111,7 @@
     "season": {
       "query": "/search/{query}/0/?sort=popular",
       "keywords": [
-        "{title} {season4ode}",
+        "{title} {seasonCode}",
         "{title} season"
       ]
     },
